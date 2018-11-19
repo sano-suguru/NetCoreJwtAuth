@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NetCoreJwtAuth.Entities;
 
-namespace CookieAuth.Models {
+namespace NetCoreJwtAuth.Models {
   public class MyDbContext : DbContext {
     public MyDbContext(DbContextOptions<MyDbContext> options)
       : base(options) { }
