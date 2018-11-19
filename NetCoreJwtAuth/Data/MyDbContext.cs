@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NetCoreJwtAuth.Entities;
 
-namespace NetCoreJwtAuth.Models {
+namespace NetCoreJwtAuth.Data {
   public class MyDbContext : DbContext {
     public MyDbContext(DbContextOptions<MyDbContext> options)
       : base(options) { }
