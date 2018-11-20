@@ -44,7 +44,8 @@ namespace NetCoreJwtAuth {
           ValidateAudience = false
         };
       });
-      services.AddScoped<IUserService, UserService>();
+      services.AddScoped<IAuthService, JwtAuthService>();
+      services.AddTransient<IUserService, UserService>();
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) {

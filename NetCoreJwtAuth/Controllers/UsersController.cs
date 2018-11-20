@@ -8,25 +8,27 @@ namespace NetCoreJwtAuth.Controllers {
   [Route("api/[controller]")]
   [ApiController]
   public class UsersController : ControllerBase {
-    readonly IUserService userService;
+    readonly IAuthService authService;
+    private readonly IUserService userService;
 
-    public UsersController(IUserService userService) {
+    public UsersController(IAuthService authService, IUserService userService) {
+      this.authService = authService;
       this.userService = userService;
     }
 
     [AllowAnonymous]
     [HttpPost("authenticate")]
     public IActionResult Authenticate([FromBody]AppUser user) {
-      var foundUser = userService.Authenticate(user.UserName, user.Password);
+      var foundUser = authService.Authenticate(user.UserName, user.Password);
       if (foundUser is null) {
         return BadRequest(new { message = "ユーザー名もしくはパスワードは不正です" });
       }
       return Ok(foundUser);
     }
 
-    [HttpGet]
-    public IActionResult GetAll() {
-      var users = userService.GetAll();
+    [HttpGet("{id}")]
+    public IActionResult GetAll(int id) {
+      var users = userService.GetById(id);
       return Ok(users);
     }
   }
