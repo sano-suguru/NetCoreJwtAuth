@@ -4,7 +4,6 @@ using Microsoft.IdentityModel.Tokens;
 using NetCoreJwtAuth.Data;
 using NetCoreJwtAuth.Entities;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -30,7 +29,6 @@ namespace NetCoreJwtAuth.Services {
     AppUser IAuthService.Authenticate(string userName, string password) {
       var foundUser = myDbContext.Users.SingleOrDefault(
         x => x.UserName == userName && x.Password == password);
-
       if (foundUser is null) {
         return null;
       }

@@ -28,8 +28,8 @@ namespace NetCoreJwtAuth.Controllers {
 
     [HttpGet("{id}")]
     public IActionResult GetAll(int id) {
-      var users = userService.GetById(id);
-      return Ok(users);
+      var user = userService.GetById(id);
+      return Ok(user);
     }
   }
 }
